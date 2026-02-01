@@ -1,0 +1,139 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ===== BODY ===== */
+body {
+    background: #1e272e;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 40px;
+}
+
+/* ===== CASE ===== */
+.case-wrapper {
+    position: relative;
+    width: 600px;
+    height: 120px;
+    margin: 30px auto;
+    overflow: hidden;
+    background: #2f3640;
+    border: 4px solid #fbc531;
+}
+
+/* ===== INDICATORS ===== */
+.indicator {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 8px;
+    background: red;
+    z-index: 10;
+}
+
+.indicator.top {
+    top: 0;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.indicator.bottom {
+    bottom: 0;
+    clip-path: polygon(50% 0, 0 100%, 100% 100%);
+}
+
+/* ===== ITEMS ===== */
+.items {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transform: translateX(0);
+    will-change: transform;
+}
+
+/* ===== ITEM ===== */
+.item {
+    width: 140px;
+    height: 90px;
+    margin: 0 6px;
+    background: #2f3640;
+    border: 3px solid;
+    border-radius: 6px;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transform: translate3d(0, 0, 0); /* ⬅️ ép GPU, không scale */
+    will-change: transform;
+
+    color: #7f8fa6;
+    flex: 0 0 auto;          /* ⬅️ CẤM flex co giãn */
+    width: 140px;
+    height: 90px;
+}
+
+/* thanh màu */
+.item::before {
+    content: "";
+    width: 92%;
+    height: 26px;
+    background: currentColor;
+    border-radius: 4px;
+    opacity: 0.9;
+}
+
+/* tên item */
+.item span {
+    position: absolute;
+    bottom: -22px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* trúng */
+.item.win {
+    box-shadow: 0 0 18px rgba(251,197,49,.9);
+}
+
+.item.win span {
+    opacity: 1;
+}
+
+/* ===== COLORS ===== */
+.item.common {
+    color: #7f8fa6;
+    border-color: #7f8fa6;
+}
+
+.item.rare {
+    color: #00a8ff;
+    border-color: #00a8ff;
+}
+
+.item.legendary {
+    color: #fbc531;
+    border-color: #fbc531;
+}
+
+.item.mythic {
+    color: #e84118;
+    border-color: #e84118;
+    box-shadow: 0 0 16px rgba(232,65,24,.8);
+}
+
+/* ===== BUTTON ===== */
+button {
+    margin-top: 30px;
+    padding: 12px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    border: none;
+}
